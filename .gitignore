@@ -1,0 +1,6 @@
+build*/
+.superpowers/
+__pycache__/
+*.pyc
+*.zip
+
