@@ -1,0 +1,357 @@
+[
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/convergence-128",
+      "--precision",
+      "double",
+      "--steps",
+      "128",
+      "--dt",
+      "0.03471262617354452",
+      "--sample-every",
+      "128"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=2 steps=128 output=\"/content/orbitlab-clean-final/results/science/convergence-128\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/convergence-256",
+      "--precision",
+      "double",
+      "--steps",
+      "256",
+      "--dt",
+      "0.01735631308677226",
+      "--sample-every",
+      "256"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=2 steps=256 output=\"/content/orbitlab-clean-final/results/science/convergence-256\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/convergence-512",
+      "--precision",
+      "double",
+      "--steps",
+      "512",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "512"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=2 steps=512 output=\"/content/orbitlab-clean-final/results/science/convergence-512\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/cpu-float",
+      "--backend",
+      "cpu",
+      "--precision",
+      "float",
+      "--steps",
+      "5120",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=float N=2 steps=5120 output=\"/content/orbitlab-clean-final/results/science/cpu-float\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/cpu-double",
+      "--backend",
+      "cpu",
+      "--precision",
+      "double",
+      "--steps",
+      "5120",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=2 steps=5120 output=\"/content/orbitlab-clean-final/results/science/cpu-double\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/cuda-basic-float",
+      "--backend",
+      "cuda-basic",
+      "--precision",
+      "float",
+      "--steps",
+      "5120",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cuda-basic precision=float N=2 steps=5120 output=\"/content/orbitlab-clean-final/results/science/cuda-basic-float\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/cuda-basic-double",
+      "--backend",
+      "cuda-basic",
+      "--precision",
+      "double",
+      "--steps",
+      "5120",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cuda-basic precision=double N=2 steps=5120 output=\"/content/orbitlab-clean-final/results/science/cuda-basic-double\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/cuda-tiled-float",
+      "--backend",
+      "cuda-tiled",
+      "--precision",
+      "float",
+      "--steps",
+      "5120",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cuda-tiled precision=float N=2 steps=5120 output=\"/content/orbitlab-clean-final/results/science/cuda-tiled-float\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/cuda-tiled-double",
+      "--backend",
+      "cuda-tiled",
+      "--precision",
+      "double",
+      "--steps",
+      "5120",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cuda-tiled precision=double N=2 steps=5120 output=\"/content/orbitlab-clean-final/results/science/cuda-tiled-double\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/euler-double",
+      "--precision",
+      "double",
+      "--integrator",
+      "euler",
+      "--steps",
+      "5120",
+      "--dt",
+      "0.00867815654338613",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=2 steps=5120 output=\"/content/orbitlab-clean-final/results/science/euler-double\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/short-initial",
+      "--fixture",
+      "cloud",
+      "--n",
+      "17",
+      "--steps",
+      "0",
+      "--precision",
+      "float"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=float N=17 steps=0 output=\"/content/orbitlab-clean-final/results/science/short-initial\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/short-cpu",
+      "--backend",
+      "cpu",
+      "--precision",
+      "double",
+      "--initial-state",
+      "/content/orbitlab-clean-final/results/science/short-initial/initial-state.csv",
+      "--steps",
+      "10",
+      "--dt",
+      "0.001",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=17 steps=10 output=\"/content/orbitlab-clean-final/results/science/short-cpu\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/short-cuda-basic",
+      "--backend",
+      "cuda-basic",
+      "--precision",
+      "double",
+      "--initial-state",
+      "/content/orbitlab-clean-final/results/science/short-initial/initial-state.csv",
+      "--steps",
+      "10",
+      "--dt",
+      "0.001",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cuda-basic precision=double N=17 steps=10 output=\"/content/orbitlab-clean-final/results/science/short-cuda-basic\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/short-cuda-tiled",
+      "--backend",
+      "cuda-tiled",
+      "--precision",
+      "double",
+      "--initial-state",
+      "/content/orbitlab-clean-final/results/science/short-initial/initial-state.csv",
+      "--steps",
+      "10",
+      "--dt",
+      "0.001",
+      "--sample-every",
+      "1"
+    ],
+    "stdout": "SIMULATION_OK backend=cuda-tiled precision=double N=17 steps=10 output=\"/content/orbitlab-clean-final/results/science/short-cuda-tiled\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/reference-4096",
+      "--precision",
+      "double",
+      "--initial-state",
+      "/content/orbitlab-clean-final/results/science/short-initial/initial-state.csv",
+      "--steps",
+      "4096",
+      "--dt",
+      "2.44140625e-05",
+      "--sample-every",
+      "4096"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=17 steps=4096 output=\"/content/orbitlab-clean-final/results/science/reference-4096\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/reference-8192",
+      "--precision",
+      "double",
+      "--initial-state",
+      "/content/orbitlab-clean-final/results/science/short-initial/initial-state.csv",
+      "--steps",
+      "8192",
+      "--dt",
+      "1.220703125e-05",
+      "--sample-every",
+      "8192"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=17 steps=8192 output=\"/content/orbitlab-clean-final/results/science/reference-8192\"\n",
+    "stderr": "",
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/content/orbitlab-clean-final/build-gpu/orbitlab",
+      "simulate",
+      "--output",
+      "/content/orbitlab-clean-final/results/science/reference-coarse",
+      "--precision",
+      "double",
+      "--initial-state",
+      "/content/orbitlab-clean-final/results/science/short-initial/initial-state.csv",
+      "--steps",
+      "128",
+      "--dt",
+      "0.00078125",
+      "--sample-every",
+      "128"
+    ],
+    "stdout": "SIMULATION_OK backend=cpu precision=double N=17 steps=128 output=\"/content/orbitlab-clean-final/results/science/reference-coarse\"\n",
+    "stderr": "",
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,6 @@
+batch,per_call_ms,repetitions,warmups,n,backend,precision,block_size,mode,max_acceleration_error
+0,0.20286875000000001,20,1,1003,cuda-basic,float,128,end-to-end,0.0021594666833028974
+1,0.20284844999999999,20,1,1003,cuda-basic,float,128,end-to-end,0.0021594666833028974
+2,0.20338885000000001,20,1,1003,cuda-basic,float,128,end-to-end,0.0021594666833028974
+3,0.2049436,20,1,1003,cuda-basic,float,128,end-to-end,0.0021594666833028974
+4,0.20397224999999999,20,1,1003,cuda-basic,float,128,end-to-end,0.0021594666833028974

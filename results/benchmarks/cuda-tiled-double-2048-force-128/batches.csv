@@ -1,0 +1,6 @@
+batch,per_call_ms,repetitions,warmups,n,backend,precision,block_size,mode,max_acceleration_error
+0,2.4868864059448241,20,5,2048,cuda-tiled,double,128,force,6.8937294177687637e-13
+1,2.4868864059448241,20,5,2048,cuda-tiled,double,128,force,6.8937294177687637e-13
+2,2.486984062194824,20,5,2048,cuda-tiled,double,128,force,6.8937294177687637e-13
+3,2.4867855072021485,20,5,2048,cuda-tiled,double,128,force,6.8937294177687637e-13
+4,2.4867967605590819,20,5,2048,cuda-tiled,double,128,force,6.8937294177687637e-13

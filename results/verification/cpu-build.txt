@@ -1,0 +1,22 @@
+[  6%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[ 12%] Building CXX object CMakeFiles/orbitlab.dir/src/main.cpp.o
+[ 18%] Linking CXX executable orbitlab
+[ 18%] Built target orbitlab
+[ 25%] Linking CXX static library ../../../lib/libgtest.a
+[ 25%] Built target gtest
+[ 37%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[ 37%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[ 43%] Linking CXX static library ../../../lib/libgtest_main.a
+[ 43%] Built target gtest_main
+[ 50%] Building CXX object CMakeFiles/orbitlab_tests.dir/tests/state_test.cpp.o
+[ 56%] Building CXX object CMakeFiles/orbitlab_tests.dir/tests/physics_test.cpp.o
+[ 62%] Linking CXX static library ../../../lib/libgmock.a
+[ 62%] Built target gmock
+[ 68%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[ 75%] Linking CXX static library ../../../lib/libgmock_main.a
+[ 75%] Built target gmock_main
+[ 81%] Building CXX object CMakeFiles/orbitlab_tests.dir/tests/integrator_test.cpp.o
+[ 87%] Building CXX object CMakeFiles/orbitlab_tests.dir/tests/io_test.cpp.o
+[ 93%] Building CXX object CMakeFiles/orbitlab_tests.dir/tests/benchmark_test.cpp.o
+[100%] Linking CXX executable orbitlab_tests
+[100%] Built target orbitlab_tests

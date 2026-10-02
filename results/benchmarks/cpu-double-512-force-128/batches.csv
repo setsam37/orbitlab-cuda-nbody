@@ -1,0 +1,6 @@
+batch,per_call_ms,repetitions,warmups,n,backend,precision,block_size,mode,max_acceleration_error
+0,1.4848877999999999,5,1,512,cpu,double,128,force,0
+1,1.4532562,5,1,512,cpu,double,128,force,0
+2,1.3817705999999998,5,1,512,cpu,double,128,force,0
+3,1.3710924,5,1,512,cpu,double,128,force,0
+4,1.3388962,5,1,512,cpu,double,128,force,0

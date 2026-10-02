@@ -1,0 +1,69 @@
+{
+  "period": 4.443216150213699,
+  "convergence": [
+    {
+      "steps": 128,
+      "dt": 0.03471262617354452,
+      "error": 0.006170508672458449
+    },
+    {
+      "steps": 256,
+      "dt": 0.01735631308677226,
+      "error": 0.001543801236569872
+    },
+    {
+      "steps": 512,
+      "dt": 0.00867815654338613,
+      "error": 0.00038602390343357544
+    }
+  ],
+  "convergence_ratios": [
+    3.996957980269874,
+    3.999237412083005
+  ],
+  "invariants": {
+    "cpu-float": {
+      "max_energy": 1.0178536352453123e-05,
+      "final_energy": 9.32762953332559e-06,
+      "max_momentum": 0.0,
+      "max_angular_momentum": 5.091572819827352e-06
+    },
+    "cpu-double": {
+      "max_energy": 5.665842784419222e-09,
+      "final_energy": 1.1168285339087877e-13,
+      "max_momentum": 0.0,
+      "max_angular_momentum": 2.983399406877925e-15
+    },
+    "cuda-basic-float": {
+      "max_energy": 4.281761964669951e-06,
+      "final_energy": 3.0309273702403685e-06,
+      "max_momentum": 0.0,
+      "max_angular_momentum": 2.1445843949031333e-06
+    },
+    "cuda-basic-double": {
+      "max_energy": 5.665848557290372e-09,
+      "final_energy": 1.2722519879318792e-13,
+      "max_momentum": 0.0,
+      "max_angular_momentum": 1.1462534563267816e-14
+    },
+    "cuda-tiled-float": {
+      "max_energy": 4.281761964669951e-06,
+      "final_energy": 3.0309273702403685e-06,
+      "max_momentum": 0.0,
+      "max_angular_momentum": 2.1445843949031333e-06
+    },
+    "cuda-tiled-double": {
+      "max_energy": 5.665848557290372e-09,
+      "final_energy": 1.2722519879318792e-13,
+      "max_momentum": 0.0,
+      "max_angular_momentum": 1.1462534563267816e-14
+    }
+  },
+  "short_agreement_max_normalized": {
+    "cpu": 0,
+    "cuda-basic": 1.132299317024156e-06,
+    "cuda-tiled": 1.132299317024156e-06
+  },
+  "reference_refinement_difference": 0.0006150651633714547,
+  "reference_coarse_error": 10.216144357414585
+}

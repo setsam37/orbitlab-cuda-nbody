@@ -1,0 +1,137 @@
+{
+  "run_utc": "2026-10-02T19:03:30.439006+00:00",
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+  "cpu": {
+    "command": [
+      "lscpu"
+    ],
+    "exit_code": 0,
+    "stdout": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  2\nOn-line CPU(s) list:                     0,1\nVendor ID:                               GenuineIntel\nModel name:                              Intel(R) Xeon(R) CPU @ 2.00GHz\nCPU family:                              6\nModel:                                   85\nThread(s) per core:                      2\nCore(s) per socket:                      1\nSocket(s):                               1\nStepping:                                3\nBogoMIPS:                                4000.40\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat md_clear arch_capabilities\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               32 KiB (1 instance)\nL1i cache:                               32 KiB (1 instance)\nL2 cache:                                1 MiB (1 instance)\nL3 cache:                                38.5 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0,1\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Vulnerable\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Mitigation; PTE Inversion\nVulnerability Mds:                       Vulnerable; SMT Host state unknown\nVulnerability Meltdown:                  Vulnerable\nVulnerability Mmio stale data:           Vulnerable\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Vulnerable\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Vulnerable: __user pointer sanitization and usercopy barriers only; no swapgs barriers\nVulnerability Spectre v2:                Vulnerable; IBPB: disabled; STIBP: disabled; PBRSB-eIBRS: Not affected; BHI: Vulnerable\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Vulnerable\nVulnerability Vmscape:                   Not affected",
+    "stderr": ""
+  },
+  "gpu": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=name,compute_cap,driver_version",
+      "--format=csv,noheader"
+    ],
+    "exit_code": 0,
+    "stdout": "Tesla T4, 7.5, 580.82.07",
+    "stderr": ""
+  },
+  "nvcc": {
+    "command": [
+      "/usr/local/cuda/bin/nvcc",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Aug_20_01:58:59_PM_PDT_2025\nCuda compilation tools, release 13.0, V13.0.88\nBuild cuda_13.0.r13.0/compiler.36424714_0",
+    "stderr": ""
+  },
+  "compiler": {
+    "command": [
+      "/usr/bin/c++",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "stderr": ""
+  },
+  "cmake": {
+    "command": [
+      "cmake",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "cmake version 3.31.10\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "stderr": ""
+  },
+  "build": {
+    "build_type": "Release",
+    "cxx_compiler": "/usr/bin/c++",
+    "cuda_compiler": "/usr/local/cuda/bin/nvcc",
+    "cuda_architectures": "75",
+    "configured_flags": {
+      "CMAKE_CUDA_FLAGS": "",
+      "CMAKE_CUDA_FLAGS_DEBUG": "-g",
+      "CMAKE_CUDA_FLAGS_MINSIZEREL": "-O1 -DNDEBUG",
+      "CMAKE_CUDA_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "CMAKE_CUDA_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_DEBUG": "-g",
+      "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+      "CMAKE_CUDA_FLAGS-ADVANCED": "1",
+      "CMAKE_CUDA_FLAGS_DEBUG-ADVANCED": "1",
+      "CMAKE_CUDA_FLAGS_MINSIZEREL-ADVANCED": "1",
+      "CMAKE_CUDA_FLAGS_RELEASE-ADVANCED": "1",
+      "CMAKE_CUDA_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1"
+    },
+    "cache_available": true,
+    "executable_sha256": "34cc8e1a3862fe6fc41431a73cdcd8f05f0c6cbff0db676e13ef77f75aee10fa",
+    "generated_flags": {
+      "CMakeFiles/orbitlab.dir/flags.make": "# CMAKE generated file: DO NOT EDIT!\n# Generated by \"Unix Makefiles\" Generator, CMake Version 3.31\n\n# compile CXX with /usr/bin/c++\nCXX_DEFINES = -DORBITLAB_HAS_CUDA=1\n\nCXX_INCLUDES = -I/content/orbitlab-clean-final/include -isystem /usr/local/cuda/targets/x86_64-linux/include -isystem /usr/local/cuda/targets/x86_64-linux/include/cccl\n\nCXX_FLAGS = -O3 -DNDEBUG -std=gnu++17\n\n",
+      "CMakeFiles/orbitlab_cuda_tests.dir/flags.make": "# CMAKE generated file: DO NOT EDIT!\n# Generated by \"Unix Makefiles\" Generator, CMake Version 3.31\n\n# compile CXX with /usr/bin/c++\nCXX_DEFINES = \n\nCXX_INCLUDES = -I/content/orbitlab-clean-final/cuda -I/content/orbitlab-clean-final/include -isystem /usr/local/cuda/targets/x86_64-linux/include -isystem /usr/local/cuda/targets/x86_64-linux/include/cccl -isystem /content/orbitlab-clean-final/build-gpu/_deps/googletest-src/googletest/include -isystem /content/orbitlab-clean-final/build-gpu/_deps/googletest-src/googletest\n\nCXX_FLAGS = -O3 -DNDEBUG -std=gnu++17\n\n",
+      "CMakeFiles/orbitlab_gpu.dir/flags.make": "# CMAKE generated file: DO NOT EDIT!\n# Generated by \"Unix Makefiles\" Generator, CMake Version 3.31\n\n# compile CUDA with /usr/local/cuda/bin/nvcc\nCUDA_DEFINES = \n\nCUDA_INCLUDES = --options-file CMakeFiles/orbitlab_gpu.dir/includes_CUDA.rsp\n\nCUDA_FLAGS = -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\"\n\n",
+      "CMakeFiles/orbitlab_tests.dir/flags.make": "# CMAKE generated file: DO NOT EDIT!\n# Generated by \"Unix Makefiles\" Generator, CMake Version 3.31\n\n# compile CXX with /usr/bin/c++\nCXX_DEFINES = \n\nCXX_INCLUDES = -I/content/orbitlab-clean-final/include -isystem /content/orbitlab-clean-final/build-gpu/_deps/googletest-src/googletest/include -isystem /content/orbitlab-clean-final/build-gpu/_deps/googletest-src/googletest\n\nCXX_FLAGS = -O3 -DNDEBUG -std=gnu++17\n\n"
+    },
+    "provenance_scope": "Observed adjacent build files and binary hash; current source hashes do not prove binary/source correspondence."
+  },
+  "seed": 37,
+  "epsilon": 0.01,
+  "dt": 0.001,
+  "batches": 5,
+  "current_source_sha256": {
+    "include/orbitlab/cuda_simulator.hpp": "599800ab142dbc8f889c05bd9f99f2788a0af10bdb3e1466b9a14fa3aa7d048c",
+    "include/orbitlab/cpu_simulator.hpp": "24140bd657e5be1a58aa6df09be2ad9c3f4b9fb43066373c743dd785e8803dcc",
+    "include/orbitlab/options.hpp": "be3fc479bf30930ad8b5b3832fa373f0c536b412bb62d8a84db3341674faf08b",
+    "include/orbitlab/physics.hpp": "e365866c29183a23939c98733307cf2f36b5956b9c8cae4df3d8a2deeb70e602",
+    "include/orbitlab/diagnostics.hpp": "3cd654f4004d0f3b5828e52bc446f15ff9e07beaec087246cb60b954e30c3027",
+    "include/orbitlab/io.hpp": "e425fd75189abf5c2c5a007e9b93924b2439f537a6dde0f513388cc43db8d63e",
+    "include/orbitlab/comparison.hpp": "0aec7f42ece179716de93ac75821ce8d300cebf0bec2d595c7c6272ece2ae882",
+    "include/orbitlab/state.hpp": "6260a424a845439bedb6bdae43ace61d976cf2fe19dc4ade35b493878f8e7b95",
+    "include/orbitlab/fixtures.hpp": "816e2600ad9f27a9b865a0c6ff272da8a2686d62b3f307065f6dc1d1ad0ba32b",
+    "src/main.cpp": "8d56f1cfb55c786078e01b651d366810ca50c57a804be754dc256212641fda5b",
+    "src/benchmark.hpp": "d64828a4967ad59fc17530d7a8648ebae974ae0def98bb7b446d539369c29ca8",
+    "src/metadata.hpp": "0ba1bcf7c78fa918e7766ab0aa69d0403f0a259919c70ec52e5ddd9872dcf480",
+    "cuda/device_buffer.hpp": "b65f5a7fe44881bb9948c72a4919665f1631d435f5715e393bb12f8b9a7d045c",
+    "cuda/forces_tiled.cuh": "8e97fd4324b7707e2dc423d7109ddd692f9c596f30e8c5f0b27c64fb43b55f12",
+    "cuda/integrate.cuh": "2cc47b784b7d5464b963eaccce87c08b83b05f89c78570c11f7740fca386eaec",
+    "cuda/gpu_simulator.cu": "f36f8d64d0825ec54a784ca9da7d0cec61f6f5b6ef79241c07ff0123ac348291",
+    "cuda/forces_basic.cuh": "66285d1dd866766ae08b46facb9376aea2a463c997afbe60aef1dac07f4db00e",
+    "cuda/cuda_event.hpp": "643e14bcc821e2ffe730f5235ecd84150333f39e09b1edcf6ef1f4bbeb424953",
+    "cuda/cuda_check.hpp": "30be517a6f2698078009b159c48d81f3e5aa16b16dc7a0d98f699c50650131b7",
+    "scripts/benchmarks.py": "33d08270a137ee5840c90c06c4f5936378c81b4bbee8598964e577453db5d701",
+    "scripts/run_science.py": "2e859443094eb62230db976befc04049f021c74927dc53acee155ba6434877b4",
+    "scripts/animate.py": "967f6ee210a26e9f40fecd70df6ed7ffbc9fa15e5dc5beb90c6d3937767a924e",
+    "scripts/test_profile.py": "5efb0ac66aa19e0517ec19774209bd597fb5cd8e98098ac2b71ebd38a22b4134",
+    "scripts/plot_science.py": "3595230e71ad86327f18d282dadb824d2e0a96233b5afbd52d102b88fceaf8a9",
+    "scripts/test_provenance.py": "b487fa73ffd9ffd3ca07019ce5f5306644769c4c54aefecb15cf5640303d0e7f",
+    "scripts/provenance.py": "efd8702ee74a25b1a0b521a953730ac1307cd6a768d252ae9204936a76695ac6",
+    "scripts/science.py": "be8c4aac5f2afe52cd5435ff9bf4fa874af128e4656a9380d0cc60c57b7b05e4",
+    "scripts/run_benchmarks.py": "e4f71b021d7154b5657d4e29cf570e92c485d416e0dae31c6c77e481cbb47c7e",
+    "scripts/plot_benchmarks.py": "43c513aa22652a4c7d968a209cf25829395f99ee733a12b261203b9cf794395a",
+    "scripts/test_cli.py": "9cfd1ebaf437b3504fac6c2e2b6370a58a975c4d70d8327d92bf7307f0f2694e",
+    "scripts/test_animation.py": "9809c08ea92ae529d87865a50cc2e4692bb8031fea190c61449c21abdd58782f",
+    "scripts/profile_kernels.py": "d9b28e504338838fa51f0a77362eff619975e81b3bc76d7fa9e4a6d888ba8fec",
+    "scripts/test_benchmarks.py": "7dfbe53c0c38f43faf05bf243840bb2b438435db16ac7cb2ee3f32d34a7f63e4",
+    "scripts/test_science.py": "342d361619e787e9b0220affa989d676f868d2198e06d1428f400d9aedcf25f4",
+    "tests/integrator_test.cpp": "d68262dcbd6e4867ed9d159ed943a71373d1ece00afb27b9c6e6ba9910af8410",
+    "tests/physics_test.cpp": "f0a1a04f64a428f40f96bf5c7dbf3f4b17336b491fa5f56086ca28eae5435165",
+    "tests/state_test.cpp": "1450fea100ba6085636006a9699f0010deb42464afb0bd3bcbb975e3c8597246",
+    "tests/cuda_force_test.cpp": "d6239f711ef3888ff0cc5ea87596fd36b92b19ff224a3d7de48e156adce4fbb3",
+    "tests/benchmark_test.cpp": "bef4fccc0c131384852ead4108263543f84c2d8c79bb50d6a34e2ad666df92ea",
+    "tests/cuda_tiling_test.cpp": "0eb278e33125423001a1ff9bb2589d67593d2f53630d21e6e7f0cbe3959fefac",
+    "tests/cuda_timing_test.cpp": "ae2816007a9908c6ef1c97d7ffd2db498760a084a22298e972fbc9c117cb09c7",
+    "tests/io_test.cpp": "758f9e93d5f3042a78022613b22462d891c6fc377299e1e777fd5d9233089733",
+    "tests/gpu_test_support.hpp": "0e08ea9f7b98168ce525a95a54d2674693b806de8358fbe7e7a7ec23d838aa2e",
+    "tests/cuda_integrator_test.cpp": "c3ccb1dbde5b3481b8d229e90d989aab0003c0d3faf89b93bbe95cafd3840502",
+    "tests/gpu_integrator_support.hpp": "6b21d6b8fd6c90cc42c45c0dd91ae795f36c1f22caf1631df85c7a15627d831f"
+  }
+}

@@ -1,0 +1,18 @@
+========= COMPUTE-SANITIZER
+Running main() from /content/orbitlab-clean-final/build-gpu/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = *PartialTile*
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from GpuTest
+[ RUN      ] GpuTest.TiledFloatPartialTileAllSizes
+force fixture configurations=99 precision bytes=4
+[       OK ] GpuTest.TiledFloatPartialTileAllSizes (651 ms)
+[ RUN      ] GpuTest.TiledDoublePartialTileAllSizes
+force fixture configurations=99 precision bytes=8
+[       OK ] GpuTest.TiledDoublePartialTileAllSizes (259 ms)
+[----------] 2 tests from GpuTest (910 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (910 ms total)
+[  PASSED  ] 2 tests.
+========= ERROR SUMMARY: 0 errors

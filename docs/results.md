@@ -6,9 +6,9 @@ Tesla T4 (compute capability7.5), CUDA13.0.88, g++13.3, CMake3.31.10, Colab Xeon
 
 | Mode | CPU ms | Basic GPU ms | Tiled GPU ms | Basic/Tiled | CPU/Tiled |
 |---|---:|---:|---:|---:|---:|
-| force | 87.9198 | 0.6202 | 0.5636 | 1.100x | 156.0x |
-| step | 87.6756 | 0.7350 | 0.5682 | 1.293x | 154.3x |
-| end-to-end | 92.2572 | 1.1571 | 0.7057 | 1.640x | 130.7x |
+| force | 88.5378 | 0.6651 | 0.6094 | 1.091x | 145.3x |
+| step | 88.2064 | 0.7394 | 0.5684 | 1.301x | 155.2x |
+| end-to-end | 91.5967 | 1.0555 | 0.7714 | 1.368x | 118.7x |
 
 Values are per call/step, medians of five batch means. End-to-end divides a completed 20-step reset/upload/integration/download run by20. CPU is a checked single-thread reference, including finite/state validation. GPU events exclude host validation. Raw min/max ranges show uncertainty; these timings do not generalize to every Colab session.
 
@@ -31,7 +31,7 @@ Ten orbital periods at dt=T/512 were tested. Zero momentum in this symmetric fix
 
 How does time scale with N? Direct summation performs N*(N-1) directed interactions; inspect `force-scaling.png` and raw throughput. Small N supplies few blocks, so launch/transfer overhead and underutilization can dominate.
 
-What does tiling change? Source global loads are cooperatively reused within a block. All matched configurations in this saved sweep favored tiling; this is an observation, not a guarantee. A larger block also means fewer blocks and more barriers/resources per block. Compare `block-size.png` before choosing256 by habit.
+What does tiling change? Source global loads are cooperatively reused within a block. At N=4096/float/B256 force-only, tiling lost: Basic/Tiled=0.874 (tiled median0.792 ms, range0.696-0.792 ms). This is a useful counterexample to assuming larger tiles are always faster. A larger block also means fewer blocks and more barriers/resources per block. Compare `block-size.png` before choosing256 by habit.
 
 What does precision cost? At N=2048/B128, inspect the float/double force entries in `summary.csv` and `precision.png`; double improves numerical precision but substantially increases T4 time.
 
@@ -39,7 +39,7 @@ Why can GPU speedup differ between force, step and end-to-end? They include diff
 
 ## Profiling interpretation
 
-Nsight Compute MemoryWorkloadAnalysis/Occupancy completed on both kernels at N=4096/float/B128. Both reported100% theoretical occupancy but12.5% achieved occupancy (four active warps per SM); the grid contains just32 blocks. Basic reported98.84% L1/TEX hit rate, while Tiled reported2.19%; L2 hit rates were95.42% and97.59%. Both had zero spilling requests.
+Nsight Compute MemoryWorkloadAnalysis/Occupancy completed on both kernels at N=4096/float/B128. Both reported100% theoretical occupancy but12.5% achieved occupancy (four active warps per SM); the grid contains just32 blocks. Basic reported98.84% L1/TEX hit rate, while Tiled reported2.16%. L2 reported99.70% and100.30%; the latter is a counter/replay measurement artifact, not a physically meaningful hit probability above100%. Both had zero spilling requests.
 
 Inference: the basic kernel already gets substantial cache reuse. A lower L1 hit fraction in the tiled kernel does not mean its memory behavior is worse: it requests fewer global values and reuses shared values. These summary metrics alone do not quantify a reduction in DRAM bytes; retain/request explicit traffic counters before claiming that. Occupancy did not improve in this profile, so it cannot explain the tiling gain. Profiles are separate from event timings and profiler replay may alter cache state.
 

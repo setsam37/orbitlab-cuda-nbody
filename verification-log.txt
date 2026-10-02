@@ -1,0 +1,28 @@
+OrbitLab final verification — 2026-10-02
+
+Actual execution: Colab Tesla T4, CUDA13.0.88, g++13.3, CMake3.31.10.
+Clean source archive extracted to /content/orbitlab-clean-final.
+CPU/GPU builds: Release, CUDA architecture75, no configured fast-math.
+
+cmake -S . -B build-gpu -DCMAKE_BUILD_TYPE=Release -DORBITLAB_ENABLE_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=75
+cmake --build build-gpu --parallel 2
+ctest --test-dir build-gpu --output-on-failure: 50/50 passed.
+ORBITLAB_EXE=/content/orbitlab-clean-final/build-gpu/orbitlab python -m unittest discover -s scripts -p 'test_*.py': 27/27 passed.
+cmake -S . -B build-cpu -DCMAKE_BUILD_TYPE=Release -DORBITLAB_ENABLE_CUDA=OFF
+cmake --build build-cpu --parallel 2
+ctest --test-dir build-cpu --output-on-failure: 33/33 passed.
+
+Compute Sanitizer memcheck and synccheck: each checked198 tiled fixture configurations over float/double, with ERROR SUMMARY: 0 errors.
+Science runner/plots/animation: passed; convergence ratios3.9969579803,3.9992374121; 240-frame orbit GIF produced.
+Benchmark runner: all120 configurations, five batches each, completed. Summary values checked against raw records. Nsight Compute sections succeeded for Basic/Tiled.
+Notebook Python syntax/JSON validated; all environment/build/test/science/performance/display cells executed from a clean directory. Upload selection was supplied by a test harness using the exact saved archive bytes; the interactive file-picker step was not independently exercised. The root name differed to avoid a test logging directory. Download was exercised separately in Colab; standard download did not expose a local file to browser tools, so actual generated download-link bytes were transferred and ZIP CRC checked.
+
+Source build metadata and executable SHA256: results/benchmarks/environment.json.
+Raw notebook/build/tests/sanitizer logs: results/verification/.
+Initial states/science CSVs from earlier verified run were retained only when SHA256-identical to the final run. Changed CSVs and final JSON/plots/logs were transferred and replaced.
+
+Fresh independent review: two important findings fixed RED→GREEN (build provenance and profiler exit status). See docs/review.md for deferred minors.
+The 'cuda-basic failed real failure'/'cuda-tiled failed real failure' lines inside Python test logs are intentional mocked profiler failures verifying nonzero exit propagation; unittest ends OK.
+
+Limitations: Windows C++ execution and hosted GitHub CI have not run. CPU CI configuration uses the verified CPU commands. Runtime replacement interrupted an earlier clean run; the final complete clean run supersedes it. Shared Colab timing varies. Metadata steps is a general simulation option; benchmark repetitions records the actual workload.
+The standalone local branch is retained. No GitHub publication or remote visibility change was performed for OrbitLab.

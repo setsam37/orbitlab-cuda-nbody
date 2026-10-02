@@ -1,0 +1,32 @@
+{
+  "status": "ok",
+  "command": [
+    "ncu",
+    "--csv",
+    "--section",
+    "MemoryWorkloadAnalysis",
+    "--section",
+    "Occupancy",
+    "--launch-count",
+    "1",
+    "--kernel-name",
+    "regex:.*force.*",
+    "/content/orbitlab-clean-final/build-gpu/orbitlab",
+    "benchmark",
+    "--backend",
+    "cuda-tiled",
+    "--n",
+    "4096",
+    "--precision",
+    "float",
+    "--block-size",
+    "128",
+    "--mode",
+    "force",
+    "--output",
+    "results/profiling/cuda-tiled"
+  ],
+  "stdout": "==PROF== Connected to process 3276 (/content/orbitlab-clean-final/build-gpu/orbitlab)\nBENCHMARK_OK backend=cuda-tiled precision=float N=4096 mode=force max_acceleration_error=0.0104895\n==PROF== Disconnected from process 3276\n\"ID\",\"Process ID\",\"Process Name\",\"Host Name\",\"Kernel Name\",\"Context\",\"Stream\",\"Block Size\",\"Grid Size\",\"Device\",\"CC\",\"Section Name\",\"Metric Name\",\"Metric Unit\",\"Metric Value\",\"Rule Name\",\"Rule Type\",\"Rule Description\",\"Estimated Speedup Type\",\"Estimated Speedup\"\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"Local Memory Spilling Requests\",\"\",\"0\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"Local Memory Spilling Request Overhead\",\"%\",\"no data\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"Memory Throughput\",\"byte/s\",\"63,125,134.15\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"Mem Busy\",\"%\",\"5.97\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"Max Bandwidth\",\"%\",\"11.91\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"L1/TEX Hit Rate\",\"%\",\"2.16\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"L2 Hit Rate\",\"%\",\"100.30\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Memory Workload Analysis\",\"Mem Pipes Busy\",\"%\",\"11.91\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Block Limit SM\",\"block\",\"16\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Block Limit Registers\",\"block\",\"16\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Block Limit Shared Mem\",\"block\",\"16\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Block Limit Warps\",\"block\",\"8\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Theoretical Active Warps per SM\",\"warp\",\"32\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Theoretical Occupancy\",\"%\",\"100\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Achieved Occupancy\",\"%\",\"12.50\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"Achieved Active Warps Per SM\",\"warp\",\"4.00\",\n\"0\",\"3276\",\"orbitlab\",\"127.0.0.1\",\"void tiled_force<float, 128>(const T1 *, T1 *, int, T1)\",\"1\",\"7\",\"(128, 1, 1)\",\"(32, 1, 1)\",\"0\",\"7.5\",\"Occupancy\",\"\",\"\",\"\",\"AchievedOccupancy\",\"OPT\",\"The difference between calculated theoretical (100.0%) and measured achieved occupancy (12.5%) can be the result of warp scheduling overheads or workload imbalances during the kernel execution. Load imbalances can occur between warps within a block as well as across blocks of the same kernel. See the CUDA Best Practices Guide (https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#occupancy) for more details on optimizing occupancy.\",\"local\",\"87.5\"\n",
+  "stderr": "",
+  "exit_code": 0
+}

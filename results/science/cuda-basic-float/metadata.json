@@ -1,0 +1,3 @@
+{
+"n":2,"steps":5120,"seed":37,"dt":0.0086781565433861306,"epsilon":0.01,"block_size":128,"sample_every":1,"precision":"float","backend":"cuda-basic","integrator":"verlet","mode":"force","units":"dimensionless, G=1"
+}

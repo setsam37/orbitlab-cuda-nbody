@@ -1,0 +1,72 @@
+Internal ctest changing into directory: /content/orbitlab-clean-final/build-cpu
+Test project /content/orbitlab-clean-final/build-cpu
+      Start  1: State.AcceptsFinitePositiveBody
+ 1/33 Test  #1: State.AcceptsFinitePositiveBody ...........................   Passed    0.00 sec
+      Start  2: State.RejectsEmpty
+ 2/33 Test  #2: State.RejectsEmpty ........................................   Passed    0.00 sec
+      Start  3: State.RejectsUnequalLengths
+ 3/33 Test  #3: State.RejectsUnequalLengths ...............................   Passed    0.00 sec
+      Start  4: State.RejectsNonpositiveMass
+ 4/33 Test  #4: State.RejectsNonpositiveMass ..............................   Passed    0.00 sec
+      Start  5: State.RejectsNonfiniteComponents
+ 5/33 Test  #5: State.RejectsNonfiniteComponents ..........................   Passed    0.00 sec
+      Start  6: State.RejectsCountOverflow
+ 6/33 Test  #6: State.RejectsCountOverflow ................................   Passed    0.00 sec
+      Start  7: Fixture.CircularPairUsesSoftenedSpeed
+ 7/33 Test  #7: Fixture.CircularPairUsesSoftenedSpeed .....................   Passed    0.00 sec
+      Start  8: Fixture.SeededCloudIsBoundedAndRepeatable
+ 8/33 Test  #8: Fixture.SeededCloudIsBoundedAndRepeatable .................   Passed    0.00 sec
+      Start  9: Fixture.RejectsInvalidSofteningAndCount
+ 9/33 Test  #9: Fixture.RejectsInvalidSofteningAndCount ...................   Passed    0.00 sec
+      Start 10: Physics.IsolatedBodyHasZeroAcceleration
+10/33 Test #10: Physics.IsolatedBodyHasZeroAcceleration ...................   Passed    0.00 sec
+      Start 11: Physics.PairHasCorrectMagnitudeAndOppositeForces
+11/33 Test #11: Physics.PairHasCorrectMagnitudeAndOppositeForces ..........   Passed    0.00 sec
+      Start 12: Physics.CoincidentBodiesRemainFinite
+12/33 Test #12: Physics.CoincidentBodiesRemainFinite ......................   Passed    0.00 sec
+      Start 13: Physics.RejectsInvalidSoftening
+13/33 Test #13: Physics.RejectsInvalidSoftening ...........................   Passed    0.00 sec
+      Start 14: Diagnostics.ComputesKineticMomentumAndAngularMomentum
+14/33 Test #14: Diagnostics.ComputesKineticMomentumAndAngularMomentum .....   Passed    0.00 sec
+      Start 15: Diagnostics.CountsEachPotentialPairOnce
+15/33 Test #15: Diagnostics.CountsEachPotentialPairOnce ...................   Passed    0.00 sec
+      Start 16: Comparison.AbsoluteFloorHandlesZeroReference
+16/33 Test #16: Comparison.AbsoluteFloorHandlesZeroReference ..............   Passed    0.00 sec
+      Start 17: Comparison.VectorNormAndRelativeScale
+17/33 Test #17: Comparison.VectorNormAndRelativeScale .....................   Passed    0.00 sec
+      Start 18: Comparison.RejectsNonfiniteAndMalformedVectors
+18/33 Test #18: Comparison.RejectsNonfiniteAndMalformedVectors ............   Passed    0.00 sec
+      Start 19: Integrator.IsolatedMotionIsLinear
+19/33 Test #19: Integrator.IsolatedMotionIsLinear .........................   Passed    0.00 sec
+      Start 20: Integrator.OneVerletStepUsesBothAccelerations
+20/33 Test #20: Integrator.OneVerletStepUsesBothAccelerations .............   Passed    0.00 sec
+      Start 21: Integrator.EulerUsesOldStateForBothUpdates
+21/33 Test #21: Integrator.EulerUsesOldStateForBothUpdates ................   Passed    0.00 sec
+      Start 22: Integrator.ResetRecomputesCachedAcceleration
+22/33 Test #22: Integrator.ResetRecomputesCachedAcceleration ..............   Passed    0.00 sec
+      Start 23: Integrator.RejectsInvalidStep
+23/33 Test #23: Integrator.RejectsInvalidStep .............................   Passed    0.00 sec
+      Start 24: Convergence.VerletIsSecondOrderForSoftenedCircularOrbit
+24/33 Test #24: Convergence.VerletIsSecondOrderForSoftenedCircularOrbit ...   Passed    0.00 sec
+      Start 25: Invariants.FloatCircularOrbit
+25/33 Test #25: Invariants.FloatCircularOrbit .............................   Passed    0.00 sec
+      Start 26: Invariants.DoubleCircularOrbit
+26/33 Test #26: Invariants.DoubleCircularOrbit ............................   Passed    0.00 sec
+      Start 27: IO.RoundtripRetainsDoublePrecision
+27/33 Test #27: IO.RoundtripRetainsDoublePrecision ........................   Passed    0.00 sec
+      Start 28: IO.ReadsHandWrittenFixture
+28/33 Test #28: IO.ReadsHandWrittenFixture ................................   Passed    0.00 sec
+      Start 29: IO.RejectsMalformedInput
+29/33 Test #29: IO.RejectsMalformedInput ..................................   Passed    0.00 sec
+      Start 30: IO.DetectsFailedOutputStream
+30/33 Test #30: IO.DetectsFailedOutputStream ..............................   Passed    0.00 sec
+      Start 31: IO.FramesUseProvidedStepAndTime
+31/33 Test #31: IO.FramesUseProvidedStepAndTime ...........................   Passed    0.00 sec
+      Start 32: Benchmark.ReusedForceOutputResizesAndClears
+32/33 Test #32: Benchmark.ReusedForceOutputResizesAndClears ...............   Passed    0.00 sec
+      Start 33: Benchmark.ForceOnlyPreservesParticleState
+33/33 Test #33: Benchmark.ForceOnlyPreservesParticleState .................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 33
+
+Total Test time (real) =   0.08 sec

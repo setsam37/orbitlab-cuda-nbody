@@ -1,0 +1,3 @@
+{
+"n":17,"steps":8192,"seed":37,"dt":1.2207031250000001e-05,"epsilon":0.01,"block_size":128,"sample_every":8192,"precision":"double","backend":"cpu","integrator":"verlet","mode":"force","units":"dimensionless, G=1"
+}
