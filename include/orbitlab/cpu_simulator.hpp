@@ -3,9 +3,9 @@
 namespace orbitlab {
 enum class Integrator { Verlet,Euler };
 template<class R> class CpuSimulator {
- State<R> s_;ForceConfig config_;Integrator integrator_;Acceleration<R> a_;
+ State<R> s_;ForceConfig config_;Integrator integrator_;Acceleration<R> a_,next_;volatile R force_sink_=0;
 public:
- CpuSimulator(State<R> s,ForceConfig c,Integrator method=Integrator::Verlet):s_(std::move(s)),config_(c),integrator_(method),a_(cpu_acceleration(s_,c)) {}
+ CpuSimulator(State<R> s,ForceConfig c,Integrator method=Integrator::Verlet):s_(std::move(s)),config_(c),integrator_(method),a_(cpu_acceleration(s_,c)),next_(a_) {}
  void step(R dt) {
   if(!std::isfinite(dt)||dt<=0) throw std::invalid_argument("dt must be finite and positive");
   auto update=[&](std::vector<R>& pos,std::vector<R>& vel,const std::vector<R>& olda){
@@ -15,15 +15,17 @@ public:
    }
   };
   update(s_.x,s_.vx,a_.x);update(s_.y,s_.vy,a_.y);update(s_.z,s_.vz,a_.z);
-  auto next=cpu_acceleration(s_,config_);
+  cpu_acceleration_into(s_,config_,next_);
   if(integrator_==Integrator::Verlet) for(std::size_t i=0;i<s_.size();++i) {
-   s_.vx[i]+=R(.5)*(a_.x[i]+next.x[i])*dt;
-   s_.vy[i]+=R(.5)*(a_.y[i]+next.y[i])*dt;
-   s_.vz[i]+=R(.5)*(a_.z[i]+next.z[i])*dt;
+   s_.vx[i]+=R(.5)*(a_.x[i]+next_.x[i])*dt;
+   s_.vy[i]+=R(.5)*(a_.y[i]+next_.y[i])*dt;
+   s_.vz[i]+=R(.5)*(a_.z[i]+next_.z[i])*dt;
   }
-  a_=std::move(next);validate_state(s_);
+  std::swap(a_,next_);validate_state(s_);
  }
- void reset(State<R> s) { auto next=cpu_acceleration(s,config_);s_=std::move(s);a_=std::move(next); }
+ void reset(const State<R>& s) { cpu_acceleration_into(s,config_,next_);s_=s;std::swap(a_,next_); }
  const State<R>& state() const { return s_; }
+ void force_only() { cpu_acceleration_into(s_,config_,a_);force_sink_+=a_.x[0]; }
+ Acceleration<R> acceleration_snapshot() const { return a_; }
 };
 }

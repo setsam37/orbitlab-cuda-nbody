@@ -3,6 +3,7 @@
 #include "forces_basic.cuh"
 #include "forces_tiled.cuh"
 #include "integrate.cuh"
+#include "cuda_event.hpp"
 namespace orbitlab {
 template<class R> struct GpuSimulator<R>::Impl {
  int n,block;ForceConfig config;GpuKernel kernel;DeviceBuffer<R> buffer;
@@ -42,9 +43,12 @@ template<class R> void GpuSimulator<R>::reset(const State<R>& s) {
  impl_->upload(s);force_only();synchronize();
 }
 template<class R> State<R> GpuSimulator<R>::download() {
- synchronize();State<R> s;std::vector<R>* fields[]={&s.mass,&s.x,&s.y,&s.z,&s.vx,&s.vy,&s.vz};
+ State<R> s;download_into(s);return s;
+}
+template<class R> void GpuSimulator<R>::download_into(State<R>& s) {
+ synchronize();std::vector<R>* fields[]={&s.mass,&s.x,&s.y,&s.z,&s.vx,&s.vy,&s.vz};
  for(int k=0;k<7;++k) { fields[k]->resize(impl_->n);CUDA_CHECK(cudaMemcpy(fields[k]->data(),impl_->buffer.data+std::size_t(k)*impl_->n,std::size_t(impl_->n)*sizeof(R),cudaMemcpyDeviceToHost)); }
- validate_state(s);return s;
+ validate_state(s);
 }
 template<class R> Acceleration<R> GpuSimulator<R>::acceleration_snapshot() {
  synchronize();Acceleration<R> a;std::vector<R>* fields[]={&a.x,&a.y,&a.z};
@@ -56,7 +60,16 @@ template<class R> Acceleration<R> GpuSimulator<R>::acceleration_snapshot() {
 }
 template<class R> void GpuSimulator<R>::force_only() { impl_->force(impl_->olda); }
 template<class R> void GpuSimulator<R>::synchronize() { CUDA_CHECK(cudaDeviceSynchronize()); }
-template<class R> double GpuSimulator<R>::timed_batch(bool,int,R) { throw std::logic_error("not implemented"); }
+template<class R> double GpuSimulator<R>::timed_batch(bool force_mode,int count,R dt) {
+ if(count<=0||count>10000) throw std::invalid_argument("invalid timing repetition count");
+ if(!std::isfinite(dt)||dt<=0) throw std::invalid_argument("invalid timing dt");
+ CudaEvent begin,end;CUDA_CHECK(cudaEventRecord(begin.value,0));
+ for(int k=0;k<count;++k) { if(force_mode) force_only();else step(dt); }
+ CUDA_CHECK(cudaEventRecord(end.value,0));CUDA_CHECK(cudaEventSynchronize(end.value));
+ float elapsed=0;CUDA_CHECK(cudaEventElapsedTime(&elapsed,begin.value,end.value));
+ if(!std::isfinite(elapsed)||elapsed<=0) throw std::runtime_error("invalid CUDA event duration");
+ return double(elapsed)/count;
+}
 template class GpuSimulator<float>;
 template class GpuSimulator<double>;
 }

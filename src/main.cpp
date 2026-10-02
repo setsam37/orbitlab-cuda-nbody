@@ -17,6 +17,7 @@ template<class R> State<R> snapshot(CpuSimulator<R>& sim) { return sim.state(); 
 #ifdef ORBITLAB_HAS_CUDA
 template<class R> State<R> snapshot(GpuSimulator<R>& sim) { return sim.download(); }
 #endif
+#include "benchmark.hpp"
 template<class R,class Sim> void simulate(Sim& sim,const State<R>& initial,const Options& o) {
  std::filesystem::create_directories(o.output);
  std::ofstream statefile(o.output/"initial-state.csv"),trajectory(o.output/"trajectory.csv"),diag(o.output/"diagnostics.csv");
@@ -30,11 +31,11 @@ template<class R,class Sim> void simulate(Sim& sim,const State<R>& initial,const
 template<class R> void execute(Options o) {
  if(!std::isfinite(R(o.dt))||R(o.dt)<=0) throw std::invalid_argument("dt is not representable in selected precision");
  softening_squared<R>({o.epsilon});auto s=initial_state<R>(o);
- if(o.command=="benchmark") throw std::logic_error("benchmark not implemented");
- if(o.backend=="cpu") { CpuSimulator<R> sim(s,{o.epsilon},o.integrator=="verlet"?Integrator::Verlet:Integrator::Euler);simulate(sim,s,o); }
+ if(o.command=="benchmark"&&o.integrator!="verlet") throw std::invalid_argument("benchmarks use Verlet");
+ if(o.backend=="cpu") { CpuSimulator<R> sim(s,{o.epsilon},o.integrator=="verlet"?Integrator::Verlet:Integrator::Euler);if(o.command=="benchmark") benchmark(sim,s,o);else simulate(sim,s,o); }
  else {
 #ifdef ORBITLAB_HAS_CUDA
-  GpuSimulator<R> sim(s,{o.epsilon},o.backend=="cuda-basic"?GpuKernel::Basic:GpuKernel::Tiled,o.block);simulate(sim,s,o);
+  GpuSimulator<R> sim(s,{o.epsilon},o.backend=="cuda-basic"?GpuKernel::Basic:GpuKernel::Tiled,o.block);if(o.command=="benchmark") benchmark(sim,s,o);else simulate(sim,s,o);
 #else
   throw std::runtime_error("CUDA backend unavailable: configure with -DORBITLAB_ENABLE_CUDA=ON");
 #endif

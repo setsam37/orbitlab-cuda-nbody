@@ -37,5 +37,12 @@ class CliTests(unittest.TestCase):
             self.assertEqual(p.returncode,0,p.stderr)
             rows=list(csv.DictReader((out/'trajectory.csv').open()));self.assertAlmostEqual(float(rows[-1]['x']),1)
             self.assertEqual(json.loads((out/'metadata.json').read_text())['n'],1)
+    def test_benchmark_produces_raw_batches_and_configuration(self):
+        with tempfile.TemporaryDirectory() as root:
+            p=self.run_cli('benchmark','--n','17','--mode','force','--precision','double','--output',root)
+            self.assertEqual(p.returncode,0,p.stderr)
+            rows=list(csv.DictReader((Path(root)/'batches.csv').open()));self.assertEqual(len(rows),5)
+            self.assertTrue(all(float(r['per_call_ms'])>0 and int(r['repetitions'])==5 for r in rows))
+            meta=json.loads((Path(root)/'metadata.json').read_text());self.assertEqual(meta['precision'],'double');self.assertEqual(meta['mode'],'force')
 
 if __name__=='__main__': unittest.main()

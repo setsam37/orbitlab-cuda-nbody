@@ -15,6 +15,7 @@ public:
  void step(R dt);
  void reset(const State<R>&);
  State<R> download();
+ void download_into(State<R>&);
  Acceleration<R> acceleration_snapshot();
  void force_only();
  void synchronize();

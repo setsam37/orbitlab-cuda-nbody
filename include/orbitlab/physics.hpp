@@ -8,9 +8,9 @@ template<class R> R softening_squared(ForceConfig c) {
  if(!std::isfinite(e2)||e2<=0) throw std::invalid_argument("epsilon squared is not representable in selected precision");
  return e2;
 }
-template<class R> Acceleration<R> cpu_acceleration(const State<R>& s,ForceConfig c) {
+template<class R> void cpu_acceleration_into(const State<R>& s,ForceConfig c,Acceleration<R>& a) {
  validate_state(s);R e2=softening_squared<R>(c);
- Acceleration<R> a{std::vector<R>(s.size()),std::vector<R>(s.size()),std::vector<R>(s.size())};
+ a.x.resize(s.size());a.y.resize(s.size());a.z.resize(s.size());
  for(std::size_t i=0;i<s.size();++i) {
   R ax=0,ay=0,az=0;
   for(std::size_t j=0;j<s.size();++j) {
@@ -23,6 +23,8 @@ template<class R> Acceleration<R> cpu_acceleration(const State<R>& s,ForceConfig
   if(!std::isfinite(ax)||!std::isfinite(ay)||!std::isfinite(az)) throw std::runtime_error("nonfinite acceleration");
   a.x[i]=ax;a.y[i]=ay;a.z[i]=az;
  }
- return a;
+}
+template<class R> Acceleration<R> cpu_acceleration(const State<R>& s,ForceConfig c) {
+ Acceleration<R> a;cpu_acceleration_into(s,c,a);return a;
 }
 }
