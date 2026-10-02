@@ -1,6 +1,7 @@
 #include "orbitlab/cuda_simulator.hpp"
 #include "device_buffer.hpp"
 #include "forces_basic.cuh"
+#include "integrate.cuh"
 namespace orbitlab {
 template<class R> struct GpuSimulator<R>::Impl {
  int n,block;ForceConfig config;GpuKernel kernel;DeviceBuffer<R> buffer;
@@ -24,7 +25,14 @@ template<class R> GpuSimulator<R>::GpuSimulator(State<R> s,ForceConfig c,GpuKern
 template<class R> GpuSimulator<R>::~GpuSimulator()=default;
 template<class R> GpuSimulator<R>::GpuSimulator(GpuSimulator&&) noexcept=default;
 template<class R> GpuSimulator<R>& GpuSimulator<R>::operator=(GpuSimulator&&) noexcept=default;
-template<class R> void GpuSimulator<R>::step(R) { throw std::logic_error("not implemented"); }
+template<class R> void GpuSimulator<R>::step(R dt) {
+ if(!std::isfinite(dt)||dt<=0) throw std::invalid_argument("dt must be finite and positive");
+ int n=impl_->n,b=impl_->block,grid=(n+b-1)/b;
+ update_positions<R><<<grid,b>>>(impl_->buffer.data,impl_->olda,n,dt);CUDA_CHECK(cudaGetLastError());
+ impl_->force(impl_->newa);
+ update_velocities<R><<<grid,b>>>(impl_->buffer.data,impl_->olda,impl_->newa,n,dt);CUDA_CHECK(cudaGetLastError());
+ std::swap(impl_->olda,impl_->newa);
+}
 template<class R> void GpuSimulator<R>::reset(const State<R>& s) {
  validate_state(s);if(s.size()!=std::size_t(impl_->n)) throw std::invalid_argument("reset cannot change N");
  impl_->upload(s);force_only();synchronize();
