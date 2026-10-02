@@ -1,5 +1,7 @@
 # OrbitLab: CUDA N-body Gravity Simulation
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/setsam37/orbitlab-cuda-nbody/blob/main/notebooks/orbitlab-colab.ipynb)
+
 An educational 3D gravity simulator in C++17/CUDA, with a serial CPU reference, basic and shared-memory GPU kernels, velocity Verlet integration, and reproducible accuracy/performance experiments. Python produces scientific plots and an orbit animation.
 
 ![Softened two-body orbit](results/orbit.gif)
@@ -29,7 +31,7 @@ ORBITLAB_EXE="$PWD/build-gpu/orbitlab" python -m unittest discover -s scripts -p
 
 On Windows use a Developer PowerShell with a supported compiler. Set `$env:ORBITLAB_EXE=(Resolve-Path build-cpu/Release/orbitlab.exe).Path` for a multi-configuration build; use `--config Release` when building and `-C Release` for CTest. Tested execution is Linux/Colab; Windows C++ execution remains unverified.
 
-No local GPU? Open [the thin Colab notebook](notebooks/orbitlab-colab.ipynb), select a GPU runtime, and upload the supplied source archive. Notebook cells invoke repository programs; implementation lives in the source files.
+No local GPU? Open [the thin Colab notebook](notebooks/orbitlab-colab.ipynb), select a GPU runtime, and run the cells to clone this public repository. Notebook cells invoke repository programs; implementation lives in the source files.
 
 ## Physics and numerical choices
 
