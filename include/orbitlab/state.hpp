@@ -11,7 +11,7 @@ template<class R> struct State {
 };
 template<class R> void validate_count(std::size_t n) {
   // Bound byte arithmetic and CUDA's integer indexing before allocating.
-  if(n==0 || n>static_cast<std::size_t>(std::numeric_limits<int>::max()-256) ||
+  if(n==0 || n>static_cast<std::size_t>(std::numeric_limits<int>::max()/13) ||
      n>std::numeric_limits<std::size_t>::max()/(13*sizeof(R)))
     throw std::invalid_argument("particle count is zero or too large");
 }
