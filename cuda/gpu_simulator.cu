@@ -1,6 +1,7 @@
 #include "orbitlab/cuda_simulator.hpp"
 #include "device_buffer.hpp"
 #include "forces_basic.cuh"
+#include "forces_tiled.cuh"
 #include "integrate.cuh"
 namespace orbitlab {
 template<class R> struct GpuSimulator<R>::Impl {
@@ -12,8 +13,11 @@ template<class R> struct GpuSimulator<R>::Impl {
   for(int k=0;k<7;++k) CUDA_CHECK(cudaMemcpy(buffer.data+std::size_t(k)*n,fields[k]->data(),std::size_t(n)*sizeof(R),cudaMemcpyHostToDevice));
  }
  void force(R* dest) {
-  if(kernel!=GpuKernel::Basic) throw std::logic_error("tiled not implemented");
-  basic_force<R><<<(n+block-1)/block,block>>>(buffer.data,dest,n,softening_squared<R>(config));
+  int grid=(n+block-1)/block;R e2=softening_squared<R>(config);
+  if(kernel==GpuKernel::Basic) basic_force<R><<<grid,block>>>(buffer.data,dest,n,e2);
+  else if(block==64) tiled_force<R,64><<<grid,64>>>(buffer.data,dest,n,e2);
+  else if(block==128) tiled_force<R,128><<<grid,128>>>(buffer.data,dest,n,e2);
+  else tiled_force<R,256><<<grid,256>>>(buffer.data,dest,n,e2);
   CUDA_CHECK(cudaGetLastError());
  }
 };
